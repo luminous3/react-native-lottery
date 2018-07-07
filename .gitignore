@@ -56,3 +56,7 @@ buck-out/
 *.jsbundle
 
 package-lock.json
+.gitattributes
+.flowconfig
+.watchmanconfig
+.buckconfig
