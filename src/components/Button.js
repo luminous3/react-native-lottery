@@ -7,7 +7,9 @@ const ButtonBasic = props => {
     <View style={styles.saveButtonContainer}>
       <TouchableOpacity>
         <View style={styles.saveButtonWrapper}>
-          <Text style={styles.saveButton}>{props.children}</Text>
+          <Text onPress={props.onPress} style={styles.saveButton}>
+            {props.children}
+          </Text>
         </View>
       </TouchableOpacity>
     </View>

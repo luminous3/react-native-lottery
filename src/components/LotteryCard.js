@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { View, Text, StyleSheet, TouchableHighlight, TouchableOpacity } from 'react-native'
 import { times, includes, indexOf, filter, omit } from 'lodash'
+import Confetti from 'react-native-confetti'
 
 import CustomNumberList from './CustomNumberList'
 import NumberPanel from './NumberPanel'
@@ -58,6 +59,10 @@ class LotteryCard extends Component {
     this.setState(initialState)
   }
 
+  onSaveTicket() {
+    this._confettiView.startConfetti()
+  }
+
   render() {
     const { numbers, saveTicket } = this.state
     return (
@@ -66,7 +71,8 @@ class LotteryCard extends Component {
           <Header onClear={this.onClear.bind(this)} />
           <CustomNumberList {...this.state} />
           <NumberPanel onPress={this.onPress.bind(this)} numbers={numbers} />
-          {saveTicket && <Button>SAVE TICKET</Button>}
+          {saveTicket && <Button onPress={this.onSaveTicket.bind(this)}>SAVE TICKET</Button>}
+          <Confetti ref={node => (this._confettiView = node)} />
         </View>
       </View>
     )
